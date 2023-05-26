@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import './App.css'
+import İmageShow from './imageShow'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function getArray() {
+  const newİmages = ['Resim1', 'Resim2', 'Resim3', 'Resim4', 'Resim5', 'Resim6']
+  return newİmages
 }
 
-export default App;
+function App() {
+  const [images, setİmages] = useState([])
+  const handleClick = () => {
+    setİmages([...getArray()])
+  }
+  return (
+    <div className='App'>
+      <button className='btn' onClick={handleClick}>
+        RESİM EKLE
+      </button>
+      <div className='img'>
+        {images.map((image) => {
+          return <İmageShow imageName={image} />
+        })}
+      </div>
+    </div>
+  )
+}
+
+export default App
